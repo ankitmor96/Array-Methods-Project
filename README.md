@@ -32,6 +32,80 @@ Users can add data and perform different array operations like push, pop, map, f
 
 ## 🛠️ Technologies Used
 
+
+---
+
+## 📸 How It Works
+
+1. Enter user name and age  
+2. Click **Add User (push)**  
+3. Data is stored in an array  
+4. Click buttons to perform different array methods  
+5. Output is shown in card format or alert
+
+---
+
+## ⚙️ Example Output
+
+```
+0 - Ankit (20)
+1 - Rahul (15)
+2 - Neha (25)
+```
+
+After filter (18+):
+
+```
+0 - Ankit (20)
+1 - Neha (25)
+```
+
+---
+
+## 🎯 Learning Outcome
+
+This project helps to understand:
+
+- How JavaScript arrays work
+- Real-time DOM manipulation
+- CRUD operations using arrays
+- Functional programming methods
+
+---
+
+## 👨‍💻 Author
+
+- Created by: **Ankit (Practice Project)**
+- Purpose: Learning JavaScript Array Methods
+
+---
+
+## 📌 Note
+
+This is a beginner-friendly project for learning JavaScript array methods with real UI interaction.
+
+---
+```
+
+---
+
+# 🚀 Ready!
+
+👉 હવે તારી પાસે છે:
+- HTML ✔️  
+- CSS ✔️  
+- JS ✔️  
+- README ✔️  
+
+---
+
+જો તું ઈચ્છે તો હું તને:
+👉 GitHub upload કેવી રીતે કરવું  
+👉 portfolio project બનાવવો  
+👉 advanced version (edit + search + localStorage)
+
+પણ બનાવી આપી શકું 😎
+
 - HTML5
 - CSS3
 - JavaScript (ES6)
