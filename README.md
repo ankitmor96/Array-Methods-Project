@@ -1,3 +1,4 @@
+<img width="1911" height="720" alt="Screenshot 2026-04-25 165037" src="https://github.com/user-attachments/assets/25b1eab9-bbf7-4640-9a67-9f856caef9f2" />
 
 
 # 📊 Array Methods Project (JavaScript)
