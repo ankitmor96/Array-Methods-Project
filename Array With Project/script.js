@@ -1,20 +1,6 @@
 let users = [];
 
-//  Add User (push)
-function addUser() {
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
 
-  if (!name || !age) {
-    alert("Enter all fields");
-    return;
-  }
-
-  users.push({ name, age: Number(age) });
-  display(users);
-}
-
-//  Display forEach
 function display(data) {
   const output = document.getElementById("output");
   output.innerHTML = "";
@@ -24,117 +10,185 @@ function display(data) {
   });
 }
 
-//  pop
-function removeLast() { users.pop(); display(users); }
 
-//  shift
-function removeFirst() { users.shift(); display(users); }
+function showResult(text) {
+  document.getElementById("result").innerText = text;
+}
 
-//  unshift
-function addFirst() {
-  users.unshift({ name: "FirstUser", age: 99 });
+
+function clearInput() {
+  document.getElementById("name").value = "";
+  document.getElementById("age").value = "";
+  document.getElementById("searchName").value = "";
+}
+
+
+function addUser() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+
+  if (!name || !age) {
+    return showResult("Enter all details");
+  }
+
+  users.push({ name, age: Number(age) });
+  clearInput();
   display(users);
 }
 
-//  splice
+
+function addFirst() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+
+  if (!name || !age) {
+    return showResult("Enter data");
+  }
+
+  users.unshift({ name, age: Number(age) });
+  clearInput();
+  display(users);
+}
+
+
+function removeLast() {
+  if (users.length === 0) {
+    return showResult("No data");
+  }
+  users.pop();
+  display(users);
+}
+
+
+function removeFirst() {
+  if (users.length === 0) {
+    return showResult("No data");
+  }
+  users.shift();
+  display(users);
+}
+
+
 function spliceData() {
+  if (users.length < 2) {
+    return showResult("Need at least 2 users");
+  }
   users.splice(1, 1);
   display(users);
 }
 
-//  slice
+
 function sliceData() {
   display(users.slice(0, 2));
 }
 
-//  concat
+
 function concatData() {
-  display(users.concat([{ name: "Extra", age: 50 }]));
-}
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
 
-//  toString
-function convertToString() {
-  alert(users.map(u => u.name).toString());
-}
-
-//  join
-function joinData() {
-  alert(users.map(u => u.name).join(" - "));
-}
-
-//  flat
-function flatData() {
-  alert([1, 2, [3, 4]].flat());
-}
-
-//  some
-function checkSome() {
-  alert(users.some(u => u.age < 18));
-}
-
-//  every
-function checkEvery() {
-  alert(users.every(u => u.age >= 18));
-}
-
-//  includes
-function checkIncludes() {
-  const names = users.map(u => u.name);
-  alert(names.includes("Ankit"));
-}
-
-//  indexOf
-function checkIndex() {
-  const names = users.map(u => u.name);
-  alert(names.indexOf("Ankit"));
-}
-
-//  reverse
-function reverseData() {
-  users.reverse();
-  display(users);
-}
-
-//  values
-function showValues() {
-  const iterator = users.values();
-  let text = "";
-  for (let v of iterator) {
-    text += v.name + " ";
+  if (!name || !age) {
+    return showResult("Enter data");
   }
-  alert(text);
+
+  const newUser = { name, age: Number(age) };
+  display(users.concat([newUser]));
 }
 
-//  find
+
+function checkIncludes() {
+  const search = document.getElementById("searchName").value;
+  const names = users.map(u => u.name);
+  showResult(names.includes(search));
+}
+
+
+function checkIndex() {
+  const search = document.getElementById("searchName").value;
+  const names = users.map(u => u.name);
+  showResult(names.indexOf(search));
+}
+
+
 function findUser() {
-  const user = users.find(u => u.age > 20);
-  alert(user ? user.name : "Not Found");
+  const search = document.getElementById("searchName").value;
+  const user = users.find(u => u.name === search);
+
+  if (user) {
+    display([user]);
+  } else {
+    showResult("Not Found");
+  }
 }
 
-//  map
+
 function mapData() {
-  const names = users.map(u => u.name.toUpperCase());
-  display(names.map(n => ({ name: n, age: "-" })));
+  const newData = users.map(u => ({
+    name: u.name.toUpperCase(),
+    age: u.age
+  }));
+  display(newData);
 }
 
-//  filter
+
 function filterData() {
   display(users.filter(u => u.age >= 18));
 }
 
-//  reduce
+
 function reduceData() {
+  if (users.length === 0) {
+    return showResult("No data");
+  }
   const total = users.reduce((sum, u) => sum + u.age, 0);
-  alert("Total Age: " + total);
+  showResult("Total Age = " + total);
 }
 
-//  sort
+
 function sortData() {
   users.sort((a, b) => a.age - b.age);
   display(users);
 }
 
-//  split
-function splitData() {
-  alert("Ankit,Rahul,Neha".split(","));
+
+function reverseData() {
+  users.reverse();
+  display(users);
+}
+
+
+function joinData() {
+  showResult(users.map(u => u.name).join(" / "));
+}
+
+function convertToString() {
+  showResult(users.map(u => u.name).toString());
+}
+
+
+function flatData() {
+  showResult([1, 2, [3, 4]].flat());
+}
+
+function SomeData() {
+  const result = users.some(u => u.age <= 18);
+  showResult(result);
+}
+
+function showValues() {
+  let text = "";
+  for (let v of users.values()) {
+    text += v.name + " ";
+  }
+  showResult(text);
+}
+
+function EveryData() {
+  const result = users.every(u => u.age > 18);
+  showResult(result);
+}
+
+function LengthData() {
+  const result = users.length;
+  showResult(result);
 }
