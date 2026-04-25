@@ -20,25 +20,28 @@ input, button {
   padding: 8px;
   margin: 5px;
 }
+.search{
+  margin-left: 140px;
+}
 
 button {
   background: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 button:hover {
-  background: #0056b3;
+  background: green;
 }
 
 .btn-group {
   margin-top: 10px;
 }
 
-#output {
-  margin-top: 15px;
+.output {
+  margin-top: 20px;
+
 }
 
 .card {
